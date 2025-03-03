@@ -7,7 +7,7 @@ const About = () => {
     justify-center gap-12 px-12 py-16 bg-white text-black">
       
       <div className="w-60 h-60 rounded-lg overflow-hidden shadow-lg">
-        <img src={bg1} alt="Oguche Mark" className="w-full h-full object-cover" />
+        <img src={bg1} alt="Oguche Mark" className="w-full h-full sm:h-48 object-cover" />
       </div>
 
       
