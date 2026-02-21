@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion'; // AnimatePresence is not needed here anymore as the component handles it internally
 import { Moon, Sun } from 'lucide-react';
 import Layout from './components/Layout';
+import SplashScreen from './components/SplashScreen'; // Import the new splash screen
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -42,11 +43,10 @@ const App: React.FC = () => {
     return () => window.removeEventListener('mousemove', moveCursor);
   }, []);
 
-  // Page Loader
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2200);
-    return () => clearTimeout(timer);
-  }, []);
+  // Handle Splash Screen Completion
+  const handleLoadingComplete = () => {
+    setLoading(false);
+  };
 
   return (
     <>
@@ -68,38 +68,23 @@ const App: React.FC = () => {
         {darkMode ? <Sun size={20} /> : <Moon size={20} />}
       </button>
 
-      {/* Loading Screen */}
-      <AnimatePresence>
-        {loading && (
-          <motion.div
-            initial={{ y: 0 }}
-            exit={{ y: '-100%' }}
-            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-[100] bg-brand-600 flex items-center justify-center"
-          >
-            <motion.h1 
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="font-display text-4xl md:text-6xl font-bold text-white tracking-tighter"
-            >
-              RespecTech.
-            </motion.h1>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Splash Screen Component */}
+      {loading && <SplashScreen onComplete={handleLoadingComplete} />}
 
-      <Router>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/impact" element={<Impact />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </Layout>
-      </Router>
+      {/* Main App Router */}
+      {!loading && (
+        <Router>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/impact" element={<Impact />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </Layout>
+        </Router>
+      )}
     </>
   );
 };
