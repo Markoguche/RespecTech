@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Quote } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
-import mapImage from '../assets/Map.png'; // Placeholder
+import mapImage from '../assets/Map.png';
 
 const stories = [
   { name: "Amina S.", role: "Frontend Dev", text: "RespecTech gave me the skills to land a job at a top fintech company." },
@@ -13,7 +13,7 @@ const stories = [
 const Impact: React.FC = () => {
   return (
     <div className="pt-10">
-      {/* 1. PAGE INTRO SECTION */}
+      
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-brand-50 to-white dark:from-neutral-900 dark:to-neutral-950 -z-10" />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-500/10 rounded-full blur-[100px] -z-10" />
