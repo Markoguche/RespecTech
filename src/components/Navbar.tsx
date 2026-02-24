@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-// 1. Import your logo image
 import logoImage from '../assets/logo.png'; 
 
 const navLinks = [
@@ -35,17 +34,18 @@ const Navbar: React.FC = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
+          // CHANGED: Reduced padding from py-6 to py-4 on mobile
+          isScrolled ? 'bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-4'
         }`}
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
-          
           
           <Link to="/" className="flex items-center">
             <img 
               src={logoImage} 
               alt="RespecTech Logo" 
-              className="h-36 md:h-28 w-auto transition-transform hover:scale-105" 
+              // CHANGED: Mobile size h-10 (40px), Desktop size md:h-28 (112px)
+              className="h-20 md:h-28 w-auto transition-transform hover:scale-105" 
             />
           </Link>
 
@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
         </div>
       </motion.nav>
 
-      {/* Mobile Sidebar (Keep existing code) */}
+      {/* Mobile Sidebar */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -87,10 +87,10 @@ const Navbar: React.FC = () => {
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             className="fixed inset-0 z-[60] lg:hidden bg-white dark:bg-neutral-950 flex flex-col"
           >
-            <div className="p-6 flex justify-between items-center border-b border-neutral-100 dark:border-neutral-800">
+            <div className="p-3 flex justify-between items-center border-b border-neutral-100 dark:border-neutral-800">
                {/* Mobile Logo */}
               <div className="text-xl font-bold">
-                 <img src={logoImage} alt="Logo" className="h-10 w-auto" />
+                 <img src={logoImage} alt="Logo" className="h-20 w-auto" />
               </div>
               <button onClick={() => setIsOpen(false)} className="text-neutral-900 dark:text-white">
                 <X size={28} />
