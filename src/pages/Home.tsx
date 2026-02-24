@@ -157,9 +157,9 @@ const Home: React.FC = () => {
           <motion.p variants={fadeInUp} className="text-neutral-300 max-w-2xl mx-auto mb-10 text-lg">
             Join thousands of talents and partners building the next generation of African technology.
           </motion.p>
-          <motion.button variants={fadeInUp} className="px-10 py-5 bg-white text-neutral-900 rounded-full font-bold text-lg hover:scale-105 hover:shadow-2xl transition-all duration-300">
+          <Link to="contact" className="px-10 py-5 bg-white text-neutral-900 rounded-full font-bold text-lg hover:scale-105 hover:shadow-2xl transition-all duration-300">
             Get Started Now
-          </motion.button>
+          </Link>
         </motion.div>
       </section>
     </motion.div>
