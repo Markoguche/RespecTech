@@ -106,7 +106,7 @@ const Home: React.FC = () => {
           </motion.div>
           
           <div className="text-center mt-12">
-            <button className="text-brand-600 font-semibold hover:underline underline-offset-4">View All Services</button>
+            <Link to="services"  className="text-brand-600 font-semibold hover:underline underline-offset-4">View All Services</Link>
           </div>
         </div>
       </section>
