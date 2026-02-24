@@ -2,8 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
-import heroImage from '../assets/Hero.png'; // Placeholder
+import heroImage from '../assets/Hero.png'; 
 import Companies from '../components/Companies';
+import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
   return (
@@ -31,12 +32,12 @@ const Home: React.FC = () => {
               We empower the next generation of African innovators by bridging the gap between raw talent and global market demands.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button className="px-8 py-4 bg-brand-600 text-white rounded-full font-medium hover:bg-brand-700 hover:shadow-lg hover:shadow-brand-500/30 transition-all flex items-center group">
+              <Link to="/services" className="px-8 py-4 bg-brand-600 text-white rounded-full font-medium hover:bg-brand-700 hover:shadow-lg hover:shadow-brand-500/30 transition-all flex items-center group">
                 Explore Programs <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="px-8 py-4 border border-neutral-300 dark:border-neutral-700 rounded-full font-medium hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors">
+              </Link>
+              <Link to="/contact" className="px-8 py-4 border border-neutral-300 dark:border-neutral-700 rounded-full font-medium hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors">
                 Partner With Us
-              </button>
+              </Link>
             </div>
           </motion.div>
           

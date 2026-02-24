@@ -16,10 +16,10 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex space-x-4">
               {[
-                { icon: Linkedin, href: '#' },
+                // { icon: Linkedin, href: '#' },
                 { icon: Twitter, href: '#' },
                 { icon: Instagram, href: '#' },
-                { icon: Github, href: '#' },
+                // { icon: Github, href: '#' },
               ].map((social, idx) => (
                 <a key={idx} href={social.href} className="w-10 h-10 rounded-full bg-neutral-800 flex items-center justify-center text-neutral-400 hover:bg-brand-600 hover:text-white transition-all">
                   <social.icon size={18} />
@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* Newsletter
           <div>
             <h4 className="font-bold text-lg mb-6">Stay Updated</h4>
             <p className="text-sm text-neutral-400 mb-4">Join our newsletter to get the latest updates on tech opportunities.</p>
@@ -64,8 +64,8 @@ const Footer: React.FC = () => {
                 Subscribe
               </button>
             </form>
-          </div>
-        </div>
+            </div> */}
+            </div>
 
         <div className="border-t border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-neutral-500">
           <p>&copy; 2026 RespecTech. All rights reserved.</p>

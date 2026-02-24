@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Linkedin, Instagram } from 'lucide-react';
+import SEO from '../components/SEO';   
+  
 
 const Contact: React.FC = () => {
   const [formState, setFormState] = useState({ name: '', email: '', org: '', message: '' });
@@ -11,8 +13,26 @@ const Contact: React.FC = () => {
     alert('Thank you for reaching out! We will get back to you shortly.');
   };
 
+  const socialLinks = [
+    {
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/company/respectech-hr/",
+      icon: <Linkedin size={20} />
+    },
+    {
+      name: "Instagram",
+      url: "https://www.instagram.com/respectechhr__?igsh=MXA2d2xmMTBraXJ4YQ==",
+      icon: <Instagram size={20} />
+    }
+  ];
+
   return (
     <section id="contact" className="py-24 bg-white dark:bg-neutral-950 relative">
+      <SEO 
+        title="Contact Us" 
+        description="Get in touch with RespecTech. Visit us at Plot 265, S.E Asebe Street, Mabushi Abuja or email Respectechhr@gmail.com."
+      />
+    
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16">
           
@@ -30,25 +50,48 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-neutral-900 dark:text-white">Email Us</h4>
-                  <p className="text-neutral-500">hello@respectech.com</p>
+                  <p className="text-neutral-500">Respectechhr@gmail.com</p>
                 </div>
               </div>
+              
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-brand-600 shrink-0">
                   <Phone size={20} />
                 </div>
                 <div>
                   <h4 className="font-bold text-neutral-900 dark:text-white">Call Us</h4>
-                  <p className="text-neutral-500">+234 800 RESPEC</p>
+                  <p className="text-neutral-500">+234 809 130 2232,
+                    <br />+234 802 635 7528</p>
                 </div>
               </div>
+              
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-brand-600 shrink-0">
                   <MapPin size={20} />
                 </div>
                 <div>
                   <h4 className="font-bold text-neutral-900 dark:text-white">Visit Us</h4>
-                  <p className="text-neutral-500">Tech Hub, Lagos, Nigeria</p>
+                  <p className="text-neutral-500">Plot 265, S.E Asebe Street, Mabushi Abuja.
+                    <br />P.O. Box 5473, Richmond, CA 94805, USA</p>
+                </div>
+              </div>
+
+              {/* SOCIAL MEDIA LINKS SECTION */}
+              <div className="pt-4">
+                <h4 className="font-bold text-neutral-900 dark:text-white mb-4">Follow Us</h4>
+                <div className="flex gap-4">
+                  {socialLinks.map((social) => (
+                    <a 
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit ${social.name}`}
+                      className="w-10 h-10 rounded-full bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-brand-600 hover:bg-brand-600 hover:text-white transition-all duration-300"
+                    >
+                      {social.icon}
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
@@ -121,3 +164,8 @@ const Contact: React.FC = () => {
 };
 
 export default Contact;
+
+
+
+
+  

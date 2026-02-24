@@ -1,23 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Quote } from 'lucide-react';
+import { MapPin, Quote, Users } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
-import mapImage from '../assets/Map.png';
-
-const stories = [
-  { name: "Amina S.", role: "Frontend Dev", text: "RespecTech gave me the skills to land a job at a top fintech company." },
-  { name: "Chukwuemeka O.", role: "Founder", text: "The accelerator program took our startup from idea to $50k funding." },
-  { name: "Fatima D.", role: "Product Designer", text: "The mentorship I received was invaluable for my career growth." }
-];
-
+import ImageCarousel from '../components/ImageCarousel';
+import { classPhotos, mapImage } from '../utils/images';
+import SEO from '../components/SEO';
 const Impact: React.FC = () => {
   return (
     <div className="pt-10">
       
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-50 to-white dark:from-neutral-900 dark:to-neutral-950 -z-10" />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-500/10 rounded-full blur-[100px] -z-10" />
-        
+      <SEO 
+        title="Our Impact Across Africa" 
+        description="Discover RespecTech's measurable impact across Africa. Over 6,000 talents trained, 1,100+ conference attendees, and countless success stories driving technological innovation."
+      />
+
+    
+      <section className="py-24 relative overflow-hidden bg-neutral-50 dark:bg-neutral-900/30">
         <motion.div 
           initial="hidden"
           whileInView="visible"
@@ -29,12 +27,12 @@ const Impact: React.FC = () => {
             Our Impact Across Africa
           </motion.h1>
           <motion.p variants={fadeInUp} className="text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
-            Measurable results, real stories, and a growing network of innovators changing the continent one line of code at a time.
+            Measurable results, real stories, and a growing network of innovators changing the continent.
           </motion.p>
         </motion.div>
       </section>
 
-      {/* 2. IMPACT METRICS SECTION */}
+      {/* 2. IMPACT METRICS (Updated with Conference Stats) */}
       <section className="py-24 bg-white dark:bg-neutral-950 border-y border-neutral-100 dark:border-neutral-800">
         <div className="container mx-auto px-6">
           <motion.div 
@@ -45,9 +43,9 @@ const Impact: React.FC = () => {
             className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
           >
             {[
+              { num: "1100", label: "Conf. Physical" },
+              { num: "300", label: "Conf. Virtual" },
               { num: "6000+", label: "Talents Empowered" },
-              { num: "50+", label: "Partner Companies" },
-              { num: "12", label: "Countries Reached" },
               { num: "95%", label: "Placement Rate" }
             ].map((metric, i) => (
               <motion.div key={i} variants={fadeInUp}>
@@ -61,8 +59,40 @@ const Impact: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. SUCCESS STORIES SECTION */}
+      {/* 3. RESPECTECH CONFERENCE & CLASSES CAROUSEL (photo13-16) */}
       <section className="py-24 bg-neutral-50 dark:bg-neutral-900/30">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+             <motion.div 
+               initial="hidden"
+               whileInView="visible"
+               viewport={{ once: true }}
+               variants={staggerContainer}
+             >
+              <div className="inline-flex items-center p-2 bg-brand-100 text-brand-700 rounded-lg mb-6">
+                <Users className="w-5 h-5 mr-2" />
+                <span className="font-semibold">The Respectech Conference</span>
+              </div>
+              <h2 className="font-display text-4xl font-bold text-neutral-900 dark:text-white mb-6">
+                Gathering the Brightest Minds
+              </h2>
+              <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed">
+                Our annual conference brings together industry leaders, developers, and enthusiasts. We recently hosted 1,100 physical attendees and 300 virtual participants, fostering a massive exchange of knowledge.
+              </p>
+              <p className="text-neutral-600 dark:text-neutral-400">
+                Beyond the conference, our daily classes at the Hub are designed to be interactive, collaborative, and intensive.
+              </p>
+            </motion.div>
+            
+            <motion.div variants={fadeInUp}>
+              <ImageCarousel images={classPhotos} title="Classes at the Hub" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. SUCCESS STORIES */}
+      <section className="py-24 bg-white dark:bg-neutral-950">
         <div className="container mx-auto px-6">
           <h2 className="font-display text-3xl font-bold text-neutral-900 dark:text-white mb-12">Success Stories</h2>
           <motion.div 
@@ -72,17 +102,19 @@ const Impact: React.FC = () => {
             variants={staggerContainer}
             className="grid md:grid-cols-3 gap-8"
           >
-            {stories.map((story, i) => (
+            {[
+              { name: "Amina S.", role: "Data Analyst", text: "The intensive training gave me the hands-on experience needed to switch careers." },
+              { name: "Chukwuemeka O.", role: "Startup Founder", text: "Through the Zuri accelerator, we secured our first round of funding." },
+              { name: "Fatima D.", role: "Frontend Dev", text: "The mentorship I received was invaluable for my career growth." }
+            ].map((story, i) => (
               <motion.div 
                 key={i} 
                 variants={fadeInUp}
                 whileHover={{ y: -10 }}
-                className="bg-white dark:bg-neutral-900 p-8 rounded-2xl shadow-lg relative"
+                className="bg-neutral-50 dark:bg-neutral-900 p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all relative"
               >
                 <Quote className="text-brand-200 absolute top-6 right-6 w-8 h-8" />
-                <p className="text-neutral-600 dark:text-neutral-300 italic mb-6 relative z-10">
-                  "{story.text}"
-                </p>
+                <p className="text-neutral-600 dark:text-neutral-300 italic mb-6 relative z-10">"{story.text}"</p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-neutral-200 dark:bg-neutral-700 rounded-full" />
                   <div>
@@ -96,7 +128,7 @@ const Impact: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. GEOGRAPHIC REACH SECTION */}
+      {/* 5. GEOGRAPHIC REACH */}
       <section className="py-24 overflow-hidden">
         <div className="container mx-auto px-6">
           <motion.div 
@@ -115,34 +147,17 @@ const Impact: React.FC = () => {
                 </div>
               </div>
             </motion.div>
-            
             <motion.div variants={fadeInUp}>
-              <h2 className="font-display text-4xl font-bold text-neutral-900 dark:text-white mb-6">
-                Bridging Borders
-              </h2>
+              <h2 className="font-display text-4xl font-bold text-neutral-900 dark:text-white mb-6">Bridging Borders</h2>
               <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-6">
-                We operate remotely and physically across key hubs in Nigeria, Kenya, Ghana, and South Africa. Our remote-first approach ensures that talent from any region can access global opportunities.
+                We operate remotely and physically across key hubs. Our remote-first approach ensures that talent from any region can access global opportunities.
               </p>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center text-neutral-700 dark:text-neutral-300">
-                  <div className="w-2 h-2 bg-brand-600 rounded-full mr-3" />
-                  Lagos (HQ)
-                </li>
-                <li className="flex items-center text-neutral-700 dark:text-neutral-300">
-                  <div className="w-2 h-2 bg-brand-600 rounded-full mr-3" />
-                  Nairobi
-                </li>
-                <li className="flex items-center text-neutral-700 dark:text-neutral-300">
-                  <div className="w-2 h-2 bg-brand-600 rounded-full mr-3" />
-                  Accra
-                </li>
-              </ul>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* 5. FUTURE VISION SECTION */}
+      {/* 6. FUTURE VISION */}
       <section className="py-32 bg-neutral-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-brand-600 to-purple-900" />
         <motion.div 
@@ -155,12 +170,7 @@ const Impact: React.FC = () => {
           <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-6xl font-bold text-white mb-6">
             The Future is Tech. The Future is Africa.
           </motion.h2>
-          <motion.p variants={fadeInUp} className="text-white/80 max-w-2xl mx-auto mb-10 text-lg">
-            We are just getting started. Join us in building the infrastructure for the next decade of innovation.
-          </motion.p>
-          <motion.button variants={fadeInUp} className="px-8 py-4 bg-white text-brand-700 rounded-full font-bold hover:bg-neutral-100 transition-colors">
-            Join Our Vision
-          </motion.button>
+          
         </motion.div>
       </section>
     </div>

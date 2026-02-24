@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom'; // CHANGED IMPORT
+import { Link, useLocation } from 'react-router-dom';
+// 1. Import your logo image
+import logoImage from '../assets/logo.png'; 
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -9,7 +11,6 @@ const navLinks = [
   { name: 'Services', path: '/services' },
   { name: 'Impact', path: '/impact' },
   { name: 'Contact', path: '/contact' },
-  // Note: 'Companies' removed from nav as it's now a section on Home
 ];
 
 const Navbar: React.FC = () => {
@@ -23,7 +24,6 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setIsOpen(false);
   }, [location]);
@@ -39,8 +39,14 @@ const Navbar: React.FC = () => {
         }`}
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
-          <Link to="/" className="text-2xl font-display font-bold tracking-tight text-neutral-900 dark:text-white">
-            Respec<span className="text-brand-600">Tech</span>
+          
+          
+          <Link to="/" className="flex items-center">
+            <img 
+              src={logoImage} 
+              alt="RespecTech Logo" 
+              className="h-36 md:h-28 w-auto transition-transform hover:scale-105" 
+            />
           </Link>
 
           {/* Desktop Menu */}
@@ -71,7 +77,7 @@ const Navbar: React.FC = () => {
         </div>
       </motion.nav>
 
-      {/* Mobile Sidebar */}
+      {/* Mobile Sidebar (Keep existing code) */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -82,7 +88,10 @@ const Navbar: React.FC = () => {
             className="fixed inset-0 z-[60] lg:hidden bg-white dark:bg-neutral-950 flex flex-col"
           >
             <div className="p-6 flex justify-between items-center border-b border-neutral-100 dark:border-neutral-800">
-              <div className="text-xl font-bold">RespecTech</div>
+               {/* Mobile Logo */}
+              <div className="text-xl font-bold">
+                 <img src={logoImage} alt="Logo" className="h-10 w-auto" />
+              </div>
               <button onClick={() => setIsOpen(false)} className="text-neutral-900 dark:text-white">
                 <X size={28} />
               </button>

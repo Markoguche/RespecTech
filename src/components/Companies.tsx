@@ -1,13 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+// Import your images
+import comp1 from '../assets/comp1.jpg';
+import comp2 from '../assets/comp2.jpg';
+import comp3 from '../assets/comp3.jpg';
+import comp4 from '../assets/comp4.jpg';
+import comp5 from '../assets/comp5.jpg';
+
 const companies = [
-  { name: "RespecTech", logo: "RT" },
-  { name: "M.", logo: "M" },
-  { name: "Zuri", logo: "Z" },
-  { name: "HertechHub", logo: "H" },
-  { name: "Gathr", logo: "G" },
-  { name: "Ingres", logo: "I" }, // Extra for loop visual
+  { name: "RescueTap", logo: comp1 },
+  { name: "M.", logo: comp2 },
+  { name: "Zuri", logo: comp3 },
+  { name: "Respectech", logo: comp4 },
+  { name: "Gathr", logo: comp5 },
 ];
 
 const Companies: React.FC = () => {
@@ -31,10 +37,15 @@ const Companies: React.FC = () => {
           }}
           whileHover={{ animationPlayState: 'paused' }}
         >
-          {[...companies, ...companies, ...companies].map((company, i) => (
-            <div key={i} className="flex items-center justify-center space-x-2 group cursor-pointer">
-              <div className="w-12 h-12 bg-neutral-100 dark:bg-neutral-800 rounded-lg flex items-center justify-center text-xl font-bold text-neutral-400 group-hover:text-brand-600 group-hover:scale-110 transition-all">
-                {company.logo}
+          {[...companies, ...companies, ...companies, ...companies].map((company, i) => (
+            <div key={i} className="flex items-center justify-center space-x-3 group cursor-pointer">
+              <div className="relative h-12 w-auto flex items-center justify-center">
+                <img 
+                  src={company.logo} 
+                  alt={company.name} 
+                  // REMOVED 'grayscale' and 'group-hover:grayscale-0'
+                  className="h-full w-auto object-contain opacity-70 transition-all duration-300 group-hover:opacity-100 group-hover:scale-110"
+                />
               </div>
               <span className="text-xl font-bold text-neutral-300 group-hover:text-neutral-900 dark:group-hover:text-white transition-colors">
                 {company.name}
