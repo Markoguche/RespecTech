@@ -23,7 +23,7 @@ const Home: React.FC = () => {
               RespecTech 2026
             </div>
             <h1 className="font-display text-5xl md:text-7xl font-bold leading-tight text-neutral-900 dark:text-white mb-6">
-              Connecting Tech Talent to <br />
+              Connecting Tech Talents to <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-orange-500">
                 Global & Local Opportunities
               </span>
