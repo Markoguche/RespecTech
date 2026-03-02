@@ -5,7 +5,7 @@ import { fadeInUp, staggerContainer } from '../utils/animations';
 import ImageCarousel from '../components/ImageCarousel';
 import { hubPhotos, aboutImage } from '../utils/images';
 import SEO from '../components/SEO'; 
-
+import Particles from '../components/Particles'
 const About: React.FC = () => {
   return (
     <div className="pt-10">
@@ -14,22 +14,35 @@ const About: React.FC = () => {
         title="About RespecTech" 
         description="Learn about RespecTech's history, mission, and vision. Founded in 2023 to empower African youth with technical skills and global opportunities."
       />
-      <section className="py-20 md:py-32 bg-neutral-50 dark:bg-neutral-900/30">
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-          className="container mx-auto px-6 text-center"
-        >
-          <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl font-bold text-neutral-900 dark:text-white mb-6">
-            About RespecTech
-          </motion.h1>
-          <motion.p variants={fadeInUp} className="text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
-            Established in 2023 by Social Good Fund Africa to empower youth with skills and connect them to global employment opportunities.
-          </motion.p>
-        </motion.div>
-      </section>
+      <section className="relative py-24 md:py-40 overflow-hidden">
+
+  <Particles />
+
+  <div className="absolute inset-0" />
+
+  <motion.div
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+    variants={staggerContainer}
+    className="container mx-auto px-6 text-center relative z-10"
+  >
+    <motion.h1
+      variants={fadeInUp}
+      className="font-display text-5xl md:text-7xl font-bold text-neutral-900 dark:text-white mb-6"
+    >
+      About RespecTech
+    </motion.h1>
+
+    <motion.p
+      variants={fadeInUp}
+      className="text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto"
+    >
+      Established in 2023 by Social Good Fund Africa to empower youth with skills and connect them to global employment opportunities.
+    </motion.p>
+  </motion.div>
+
+</section>
 
       {/* 2. OUR STORY & BACKGROUND */}
       <section className="py-24">

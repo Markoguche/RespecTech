@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import logoImage from '../assets/logo.png'; 
+import Checkbox from './Checkbox';
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -27,6 +27,10 @@ const Navbar: React.FC = () => {
     setIsOpen(false);
   }, [location]);
 
+  const handleMenuToggle = (checked: boolean) => {
+    setIsOpen(checked);
+  };
+
   return (
     <>
       <motion.nav
@@ -34,7 +38,6 @@ const Navbar: React.FC = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          // CHANGED: Reduced padding from py-6 to py-4 on mobile
           isScrolled ? 'bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-4'
         }`}
       >
@@ -44,7 +47,6 @@ const Navbar: React.FC = () => {
             <img 
               src={logoImage} 
               alt="RespecTech Logo" 
-              // CHANGED: Mobile size h-10 (40px), Desktop size md:h-28 (112px)
               className="h-20 md:h-28 w-auto transition-transform hover:scale-105" 
             />
           </Link>
@@ -70,10 +72,14 @@ const Navbar: React.FC = () => {
             </Link>
           </div>
 
-          {/* Mobile Hamburger */}
-          <button className="lg:hidden text-neutral-900 dark:text-white" onClick={() => setIsOpen(true)} aria-label="Open Menu">
-            <Menu size={28} />
-          </button>
+          {/* Mobile Hamburger - Using custom Checkbox component */}
+          <div className="lg:hidden">
+            <Checkbox 
+              checked={isOpen}
+              onChange={handleMenuToggle}
+              className="text-neutral-900 dark:text-white"
+            />
+          </div>
         </div>
       </motion.nav>
 
@@ -92,9 +98,11 @@ const Navbar: React.FC = () => {
               <div className="text-xl font-bold">
                  <img src={logoImage} alt="Logo" className="h-20 w-auto" />
               </div>
-              <button onClick={() => setIsOpen(false)} className="text-neutral-900 dark:text-white">
-                <X size={28} />
-              </button>
+              <Checkbox 
+                checked={isOpen}
+                onChange={handleMenuToggle}
+                className="text-neutral-900 dark:text-white"
+              />
             </div>
             <div className="flex-1 flex flex-col justify-center px-8 space-y-6">
               {navLinks.map((link, index) => (
@@ -107,6 +115,7 @@ const Navbar: React.FC = () => {
                   <Link
                     to={link.path}
                     className="text-3xl font-display font-medium text-neutral-900 dark:text-white hover:text-brand-600 cursor-pointer block"
+                    onClick={() => setIsOpen(false)}
                   >
                     {link.name}
                   </Link>
