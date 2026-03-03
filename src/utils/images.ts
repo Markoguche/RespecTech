@@ -46,6 +46,53 @@ export const hubPhotos = [
 ];
 
 // ==========================================
+// Group 4: RespecTech Conference (conf1-10)
+// ==========================================
+import conf1 from '../assets/conf1.jpg';
+import conf2 from '../assets/conf2.jpg';
+import conf3 from '../assets/conf3.jpg';
+import conf4 from '../assets/conf4.jpg';
+import conf5 from '../assets/conf5.jpg';
+import conf6 from '../assets/conf6.jpg';
+import conf7 from '../assets/conf7.jpg';
+import conf8 from '../assets/conf8.jpg';
+import conf9 from '../assets/conf9.jpg';
+import conf10 from '../assets/conf10.jpg';
+
+export const conferencePhotos = [
+  conf1, conf2, conf3, conf4, conf5, conf6, 
+  conf7, conf8, conf9, conf10
+];
+
+// ==========================================
+// Group 5: US Ambassador Visit (amb1-11)
+// ==========================================
+import amb1 from '../assets/amb1.png';
+import amb2 from '../assets/amb2.png';
+import amb3 from '../assets/amb3.png';
+import amb4 from '../assets/amb4.png';
+import amb5 from '../assets/amb5.png';
+import amb6 from '../assets/amb6.png';
+import amb7 from '../assets/amb7.png';
+import amb8 from '../assets/amb8.png';
+import amb9 from '../assets/amb9.png';
+import amb10 from '../assets/amb10.png';
+
+
+export const ambassadorPhotos = [
+  amb1, amb2, amb3, amb4, amb5, amb6, 
+  amb7, amb8, amb9, amb10
+];
+
+// ==========================================
+// Group 6: All Event Photos (Combined)
+// ==========================================
+export const allEventPhotos = [
+  ...conferencePhotos,
+  ...ambassadorPhotos
+];
+
+// ==========================================
 // Other Placeholders
 // ==========================================
 import hero from '../assets/Hero.png';
