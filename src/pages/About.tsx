@@ -151,27 +151,7 @@ const About = () => {
                 fostering innovation, and building sustainable technology ecosystems.
               </motion.p>
 
-              <motion.div 
-                variants={fadeInUp}
-                className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
-              >
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-gradient-to-r from-brand-600 to-orange-500 text-white rounded-full font-bold text-lg hover:shadow-2xl transition-all duration-500 backdrop-blur-sm"
-                >
-                  Our Story
-                  <ArrowRight className="inline-block ml-2 w-5 h-5" />
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 border-2 border-neutral-300 dark:border-neutral-700 rounded-full font-bold text-lg hover:border-brand-600 transition-all duration-500 backdrop-blur-sm"
-                >
-                  Join Us
-                </motion.button>
-              </motion.div>
-
+              
               {/* IMAGE CAROUSEL */}
               <motion.div 
                 variants={fadeInUp}
@@ -761,34 +741,40 @@ const About = () => {
               
               {[
                 {
-                  year: "2018",
+                  year: "2020",
                   title: "The Beginning",
                   description: "Founded with a vision to transform African tech education",
                   align: "left"
                 },
                 {
-                  year: "2019",
+                  year: "2021",
                   title: "First Cohort",
                   description: "Graduated 100 students from our inaugural program",
                   align: "right"
                 },
                 {
-                  year: "2020",
+                  year: "2022",
                   title: "Expansion",
-                  description: "Launched in 5 new African countries",
+                  description: "Launched in 5 new Startups in Nigeria and across other countries",
                   align: "left"
                 },
                 {
-                  year: "2021",
+                  year: "2023",
                   title: "Partnership Growth",
                   description: "Secured partnerships with 20+ global tech companies",
                   align: "right"
                 },
                 {
-                  year: "2023",
-                  title: "10,000 Graduates",
-                  description: "Reached our milestone of 10,000 successful graduates",
+                  year: "2024",
+                  title: "500+ Graduates",
+                  description: "Reached our milestone of 500+ successful graduates",
                   align: "left"
+                },
+                {
+                  year: "2025",
+                  title: "800+ Graduates",
+                  description: "Reached an incredible milestone of 800+ successful graduates",
+                  align: "right"
                 }
               ].map((milestone, i) => (
                 <motion.div
@@ -869,20 +855,14 @@ const About = () => {
                 variants={fadeInUp}
                 className="flex flex-col sm:flex-row gap-6 justify-center"
               >
-                <motion.button
+                <motion.p
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-4 bg-white text-brand-600 rounded-full font-bold text-lg hover:shadow-2xl transition-all duration-500 backdrop-blur-sm"
                 >
-                  Join Our Team
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 border-2 border-white text-white rounded-full font-bold text-lg hover:bg-white/10 transition-all duration-500 backdrop-blur-sm"
-                >
-                  Partner With Us
-                </motion.button>
+                  Join Our Team or  Partner With Us
+                </motion.p>
+                
               </motion.div>
             </motion.div>
           </div>
