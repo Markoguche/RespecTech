@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { 
@@ -92,45 +90,41 @@ const Home: React.FC = () => {
     setTimeout(() => setProgress(20), 1600);
   };
 
-  // Animation variants with slower transitions
+  // Optimized animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.4,
-        duration: 1.2,
+        staggerChildren: 0.2,
+        delayChildren: 0.2,
+        duration: 0.8,
         ease: "easeOut"
       }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 80, opacity: 0 },
+    hidden: { y: 40, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring",
-        stiffness: 40,
-        damping: 20,
-        duration: 1.5,
+        type: "tween",
+        duration: 0.6,
         ease: "easeOut"
       }
     }
   };
 
   const scaleVariants = {
-    hidden: { scale: 0.6, opacity: 0 },
+    hidden: { scale: 0.8, opacity: 0 },
     visible: {
       scale: 1,
       opacity: 1,
       transition: {
-        type: "spring",
-        stiffness: 30,
-        damping: 15,
-        duration: 1.8,
+        type: "tween",
+        duration: 0.8,
         ease: "easeOut"
       }
     }
@@ -144,30 +138,28 @@ const Home: React.FC = () => {
       variants={containerVariants}
       className="overflow-x-hidden"
     >
-      {/* 1. HERO SECTION - FULL SCREEN */}
+      {/* 1. HERO SECTION - FULL SCREEN (OPTIMIZED) */}
       <section className="min-h-screen flex items-center pt-20 relative overflow-hidden">
-        {/* Animated Background Elements */}
+        {/* Simplified Animated Background Elements */}
         <motion.div 
-          className="absolute top-20 right-0 w-[600px] h-[600px] bg-brand-500/20 rounded-full blur-[120px] -z-10"
+          className="absolute top-20 right-0 w-[400px] h-[400px] bg-brand-500/10 rounded-full blur-[100px] -z-10"
           animate={{
-            scale: [1, 1.3, 1],
-            x: [0, 150, 0],
+            scale: [1, 1.2, 1],
           }}
           transition={{
-            duration: 20,
+            duration: 15,
             repeat: Infinity,
             repeatType: "reverse",
             ease: "easeInOut"
           }}
         />
         <motion.div 
-          className="absolute bottom-20 left-0 w-[400px] h-[400px] bg-orange-500/20 rounded-full blur-[100px] -z-10"
+          className="absolute bottom-20 left-0 w-[300px] h-[300px] bg-orange-500/10 rounded-full blur-[80px] -z-10"
           animate={{
-            scale: [1, 1.2, 1],
-            y: [0, -80, 0],
+            scale: [1, 1.15, 1],
           }}
           transition={{
-            duration: 18,
+            duration: 12,
             repeat: Infinity,
             repeatType: "reverse",
             ease: "easeInOut"
@@ -178,8 +170,8 @@ const Home: React.FC = () => {
           <motion.div variants={itemVariants}>
             <motion.div 
               className="inline-block px-3 py-1 mb-6 text-xs font-semibold tracking-wider text-brand-600 uppercase bg-brand-50 rounded-full"
-              whileHover={{ scale: 1.08, rotate: 3 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
             >
               <Sparkles className="inline w-3 h-3 mr-1" />
               RespecTech 2026
@@ -195,7 +187,7 @@ const Home: React.FC = () => {
                   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                 }}
                 transition={{
-                  duration: 12,
+                  duration: 15,
                   repeat: Infinity,
                   repeatType: "reverse",
                   ease: "easeInOut"
@@ -214,18 +206,13 @@ const Home: React.FC = () => {
               className="flex flex-wrap gap-4"
               variants={itemVariants}
             >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.6 }}>
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0.2 }}>
                 <Link to="/services" className="px-8 py-4 bg-brand-600 text-white rounded-full font-medium hover:bg-brand-700 hover:shadow-lg hover:shadow-brand-500/30 transition-all flex items-center group">
                   Explore Programs 
-                  <motion.div
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-                  >
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </motion.div>
+                  <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.6 }}>
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0.2 }}>
                 <Link to="/contact" className="px-8 py-4 border border-neutral-300 dark:border-neutral-700 rounded-full font-medium hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-all">
                   Partner With Us
                 </Link>
@@ -237,40 +224,41 @@ const Home: React.FC = () => {
             <motion.div 
               className="relative rounded-3xl overflow-hidden shadow-2xl border border-neutral-200 dark:border-neutral-800"
               animate={{
-                rotate: [3, -3, 3],
+                rotate: [2, -2, 2],
               }}
               transition={{
-                duration: 12,
+                duration: 8,
                 repeat: Infinity,
                 repeatType: "reverse",
                 ease: "easeInOut"
               }}
             >
-              <img src={heroImage} alt="Tech Talents" className="w-full h-auto object-cover" />
+              <img 
+                src={heroImage} 
+                alt="Tech Talents" 
+                className="w-full h-auto object-cover will-change-transform"
+                loading="eager"
+                decoding="async"
+              />
               <motion.div 
-                className="absolute inset-0 bg-gradient-to-t from-neutral-900/20 to-transparent"
-                animate={{ opacity: [0.3, 0.6, 0.3] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-0 bg-gradient-to-t from-neutral-900/10 to-transparent"
+                animate={{ opacity: [0.1, 0.3, 0.1] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               />
             </motion.div>
             <motion.div 
               className="absolute -bottom-6 -right-6 bg-white dark:bg-neutral-900 p-4 rounded-xl shadow-lg border border-neutral-100 dark:border-neutral-800 flex items-center gap-3"
               animate={{
-                y: [0, -15, 0],
+                y: [0, -8, 0],
               }}
               transition={{
-                duration: 4,
+                duration: 3,
                 repeat: Infinity,
                 repeatType: "reverse",
                 ease: "easeInOut"
               }}
             >
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-              >
-                <CheckCircle2 className="text-green-500 w-6 h-6" />
-              </motion.div>
+              <CheckCircle2 className="text-green-500 w-6 h-6" />
               <div>
                 <p className="text-xs text-neutral-500">Global Reach</p>
                 <p className="font-bold">100+ Countries</p>
@@ -280,22 +268,22 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. TRUST / SOCIAL PROOF SECTION */}
+      {/* 2. TRUST / SOCIAL PROOF SECTION (OPTIMIZED) */}
       <section className="py-16 border-y border-neutral-100 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/30">
         <div className="container mx-auto text-center">
           <Companies/>
         </div>
       </section>
 
-      {/* 3. SERVICES PREVIEW SECTION - FULL SCREEN */}
+      {/* 3. SERVICES PREVIEW SECTION - FULL SCREEN (OPTIMIZED) */}
       <section className="min-h-screen flex items-center py-20 bg-white dark:bg-neutral-950 relative overflow-hidden">
         <motion.div 
-          className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-brand-50/30 to-transparent opacity-50"
+          className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-brand-50/20 to-transparent opacity-50"
           animate={{
             backgroundPosition: ["0% 0%", "100% 100%"],
           }}
           transition={{
-            duration: 30,
+            duration: 40,
             repeat: Infinity,
             repeatType: "reverse",
             ease: "easeInOut"
@@ -306,7 +294,7 @@ const Home: React.FC = () => {
           <motion.div 
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             variants={containerVariants}
             className="text-center mb-20"
           >
@@ -318,7 +306,7 @@ const Home: React.FC = () => {
                 className="h-1 w-20 bg-brand-600 mx-auto rounded-full"
                 initial={{ width: 0 }}
                 whileInView={{ width: 80 }}
-                transition={{ duration: 1.5, delay: 0.6, ease: "easeOut" }}
+                transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
               />
             </motion.div>
             <motion.p 
@@ -332,7 +320,7 @@ const Home: React.FC = () => {
           <motion.div 
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             variants={containerVariants}
             className="grid md:grid-cols-3 gap-8"
           >
@@ -362,23 +350,20 @@ const Home: React.FC = () => {
                 className="group relative"
               >
                 <motion.div 
-                  className="p-8 rounded-3xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-100 dark:border-neutral-800 hover:border-brand-500/50 transition-all duration-700 h-full"
+                  className="p-8 rounded-3xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-100 dark:border-neutral-800 hover:border-brand-500/50 transition-all duration-500 h-full"
                   whileHover={{ 
-                    y: -15,
-                    boxShadow: "0 25px 50px rgba(124, 58, 237, 0.2)"
+                    y: -8,
+                    boxShadow: "0 20px 40px rgba(124, 58, 237, 0.15)"
                   }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  transition={{ duration: 0.4 }}
                 >
                   <motion.div 
-                    className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-500`}
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 1.2, ease: "easeInOut" }}
+                    className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-105 transition-transform duration-300`}
                   >
                     <service.icon size={28} />
                   </motion.div>
                   <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
                   <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">{service.desc}</p>
-                  
                 </motion.div>
               </motion.div>
             ))}
@@ -388,17 +373,11 @@ const Home: React.FC = () => {
             className="text-center mt-16"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 1.5 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
           >
             <Link to="services" className="inline-flex items-center text-brand-600 font-semibold text-lg hover:underline underline-offset-4 group">
               View All Services 
-              <motion.span
-                animate={{ x: [0, 5, 0] }}
-                transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-                className="ml-2"
-              >
-                <ArrowRight size={20} />
-              </motion.span>
+              <ArrowRight size={20} className="ml-2" />
             </Link>
           </motion.div>
         </div>
@@ -636,152 +615,145 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
-      
 
-     
-{/* 7. CALL TO ACTION SECTION - FULL SCREEN */}
-<section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-  {/* Animated Background Gradient */}
-  <motion.div 
-    className="absolute inset-0 bg-gradient-to-br from-orange-600 via-red-600 to-orange-700"
-    animate={{
-      background: [
-        "linear-gradient(to bottom right, #ea580c, #dc2626, #c2410c)",
-        "linear-gradient(to bottom right, #dc2626, #ea580c, #b91c1c)",
-        "linear-gradient(to bottom right, #ea580c, #dc2626, #c2410c)"
-      ]
-    }}
-    transition={{
-      duration: 15,
-      repeat: Infinity,
-      repeatType: "reverse",
-      ease: "easeInOut"
-    }}
-  />
+      {/* 7. CALL TO ACTION SECTION - FULL SCREEN */}
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+        {/* Animated Background Gradient */}
+        <motion.div 
+          className="absolute inset-0 bg-gradient-to-br from-orange-600 via-red-600 to-orange-700"
+          animate={{
+            background: [
+              "linear-gradient(to bottom right, #ea580c, #dc2626, #c2410c)",
+              "linear-gradient(to bottom right, #dc2626, #ea580c, #b91c1c)",
+              "linear-gradient(to bottom right, #ea580c, #dc2626, #c2410c)"
+            ]
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "easeInOut"
+          }}
+        />
 
-  {/* Floating Orbs */}
-  {[...Array(8)].map((_, i) => (
-    <motion.div
-      key={i}
-      className="absolute rounded-full blur-xl"
-      style={{
-        width: `${Math.random() * 200 + 50}px`,
-        height: `${Math.random() * 200 + 50}px`,
-        background: `radial-gradient(circle, rgba(251,146,60,${Math.random() * 0.3 + 0.1}) 0%, transparent 70%)`,
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
-      }}
-      animate={{
-        x: [Math.random() * 150 - 75, Math.random() * 150 - 75, Math.random() * 150 - 75],
-        y: [Math.random() * 150 - 75, Math.random() * 150 - 75, Math.random() * 150 - 75],
-        scale: [1, 1.4, 1, 0.8, 1],
-        opacity: [0.3, 0.6, 0.3],
-      }}
-      transition={{
-        duration: 10 + Math.random() * 10,
-        repeat: Infinity,
-        repeatType: "reverse",
-        ease: "easeInOut",
-        delay: Math.random() * 5
-      }}
-    />
-  ))}
+        {/* Floating Orbs */}
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full blur-xl"
+            style={{
+              width: `${Math.random() * 200 + 50}px`,
+              height: `${Math.random() * 200 + 50}px`,
+              background: `radial-gradient(circle, rgba(251,146,60,${Math.random() * 0.3 + 0.1}) 0%, transparent 70%)`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              x: [Math.random() * 150 - 75, Math.random() * 150 - 75, Math.random() * 150 - 75],
+              y: [Math.random() * 150 - 75, Math.random() * 150 - 75, Math.random() * 150 - 75],
+              scale: [1, 1.4, 1, 0.8, 1],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 10 + Math.random() * 10,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut",
+              delay: Math.random() * 5
+            }}
+          />
+        ))}
 
-  {/* Particles */}
-  {[...Array(20)].map((_, i) => (
-    <motion.div
-      key={`particle-${i}`}
-      className="absolute w-1 h-1 bg-orange-300 rounded-full"
-      style={{
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
-      }}
-      animate={{
-        y: [0, -100, 0],
-        opacity: [0, 1, 0],
-        scale: [0, 1, 0],
-      }}
-      transition={{
-        duration: 3 + Math.random() * 2,
-        repeat: Infinity,
-        delay: Math.random() * 3,
-        ease: "easeOut"
-      }}
-    />
-  ))}
+        {/* Particles */}
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={`particle-${i}`}
+            className="absolute w-1 h-1 bg-orange-300 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -100, 0],
+              opacity: [0, 1, 0],
+              scale: [0, 1, 0],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+              ease: "easeOut"
+            }}
+          />
+        ))}
 
-  {/* Content */}
-  <motion.div 
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true }}
-    variants={containerVariants}
-    className="container mx-auto px-6 relative z-10 text-center"
-  >
-    <motion.div
-      initial={{ width: 0 }}
-      whileInView={{ width: "200px" }}
-      transition={{ duration: 1.5, delay: 0.5 }}
-      className="h-1 bg-gradient-to-r from-orange-300 to-red-300 mx-auto mb-8 rounded-full"
-    />
+        {/* Content */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+          className="container mx-auto px-6 relative z-10 text-center"
+        >
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: "200px" }}
+            transition={{ duration: 1.5, delay: 0.5 }}
+            className="h-1 bg-gradient-to-r from-orange-300 to-red-300 mx-auto mb-8 rounded-full"
+          />
 
-    <motion.h2 
-      variants={itemVariants}
-      className="font-display text-4xl md:text-7xl font-bold text-white mb-8 leading-tight"
-    >
-      Ready to Shape the <br />
-      <motion.span 
-        className="text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-red-300"
-        animate={{
-          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      >
-        Future of Tech
-      </motion.span>
-    </motion.h2>
+          <motion.h2 
+            variants={itemVariants}
+            className="font-display text-4xl md:text-7xl font-bold text-white mb-8 leading-tight"
+          >
+            Ready to Shape the <br />
+            <motion.span 
+              className="text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-red-300"
+              animate={{
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              Future of Tech
+            </motion.span>
+          </motion.h2>
 
-    <motion.p
-      variants={itemVariants}
-      className="text-orange-100 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
-    >
-      Join thousands of African innovators building world-class products,
-      launching startups, and securing global opportunities through
-      RespecTech programs.
-    </motion.p>
+          <motion.p
+            variants={itemVariants}
+            className="text-orange-100 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+          >
+            Join thousands of African innovators building world-class products,
+            launching startups, and securing global opportunities through
+            RespecTech programs.
+          </motion.p>
 
-    <motion.div
-      variants={itemVariants}
-      className="flex flex-wrap justify-center gap-6"
-    >
-      <Link
-        to="/services"
-        className="px-8 py-4 bg-white text-orange-600 font-semibold rounded-full hover:bg-orange-50 transition-all flex items-center gap-2"
-      >
-        Start Learning
-        <ArrowRight className="w-5 h-5" />
-      </Link>
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-wrap justify-center gap-6"
+          >
+            <Link
+              to="/services"
+              className="px-8 py-4 bg-white text-orange-600 font-semibold rounded-full hover:bg-orange-50 transition-all flex items-center gap-2"
+            >
+              Start Learning
+              <ArrowRight className="w-5 h-5" />
+            </Link>
 
-      <Link
-        to="/contact"
-        className="px-8 py-4 border border-white/40 text-white rounded-full hover:bg-white/10 transition-all"
-      >
-        Talk to Us
-      </Link>
+            <Link
+              to="/contact"
+              className="px-8 py-4 border border-white/40 text-white rounded-full hover:bg-white/10 transition-all"
+            >
+              Talk to Us
+            </Link>
+          </motion.div>
+        </motion.div>
+      </section>
     </motion.div>
-  </motion.div>
-</section>
-</motion.div>
   );
 };
 
 export default Home;
-          
-
-        
-      
-    
