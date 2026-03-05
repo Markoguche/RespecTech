@@ -10,6 +10,9 @@ html {
 
 body {
   @apply bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100 transition-colors duration-300;
+   -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  
 }
 
 /* Noise Texture Overlay */
@@ -37,4 +40,31 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-brand-600;
+}
+/* Optimize for mobile */
+@media (max-width: 768px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* GPU acceleration hints */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

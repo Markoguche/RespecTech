@@ -638,8 +638,9 @@ const Home: React.FC = () => {
       </section>
       
 
-      {/* 7. CALL TO ACTION SECTION - FULL SCREEN */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+     
+{/* 7. CALL TO ACTION SECTION - FULL SCREEN */}
+<section className="min-h-screen flex items-center justify-center relative overflow-hidden">
   {/* Animated Background Gradient */}
   <motion.div 
     className="absolute inset-0 bg-gradient-to-br from-orange-600 via-red-600 to-orange-700"
@@ -657,8 +658,8 @@ const Home: React.FC = () => {
       ease: "easeInOut"
     }}
   />
-  
-  {/* Floating Orbs with Enhanced Animation */}
+
+  {/* Floating Orbs */}
   {[...Array(8)].map((_, i) => (
     <motion.div
       key={i}
@@ -686,7 +687,7 @@ const Home: React.FC = () => {
     />
   ))}
 
-  {/* Particle Effects */}
+  {/* Particles */}
   {[...Array(20)].map((_, i) => (
     <motion.div
       key={`particle-${i}`}
@@ -709,7 +710,7 @@ const Home: React.FC = () => {
     />
   ))}
 
-  {/* Main Content */}
+  {/* Content */}
   <motion.div 
     initial="hidden"
     whileInView="visible"
@@ -717,7 +718,6 @@ const Home: React.FC = () => {
     variants={containerVariants}
     className="container mx-auto px-6 relative z-10 text-center"
   >
-    {/* Decorative Top Line */}
     <motion.div
       initial={{ width: 0 }}
       whileInView={{ width: "200px" }}
@@ -736,134 +736,52 @@ const Home: React.FC = () => {
           backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
         }}
         transition={{
-          duration: 10,
+          duration: 8,
           repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut"
+          ease: "easeInOut",
         }}
       >
-        Future?
+        Future of Tech
       </motion.span>
     </motion.h2>
 
-    <motion.p 
+    <motion.p
       variants={itemVariants}
-      className="text-neutral-200 max-w-3xl mx-auto mb-12 text-xl leading-relaxed"
+      className="text-orange-100 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
     >
-      Join thousands of talents and partners building the next generation of African technology.
+      Join thousands of African innovators building world-class products,
+      launching startups, and securing global opportunities through
+      RespecTech programs.
     </motion.p>
 
-    <motion.div 
-      variants={itemVariants}
-      className="flex flex-col sm:flex-row gap-6 justify-center items-center"
-    >
-      {/* Primary CTA Button */}
-      <motion.div 
-        whileHover={{ scale: 1.05 }} 
-        whileTap={{ scale: 0.95 }} 
-        transition={{ duration: 0.8 }}
-        className="relative group"
-      >
-        <motion.div
-          className="absolute inset-0 bg-white rounded-full blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-500"
-          animate={{ scale: [1, 1.2, 1] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        />
-        <Link 
-          to="contact" 
-          className="relative px-12 py-5 bg-white text-orange-600 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-white/30 transition-all duration-500 flex items-center group overflow-hidden"
-        >
-          <motion.span
-            className="relative z-10 flex items-center"
-            whileHover={{ x: 5 }}
-            transition={{ duration: 0.3 }}
-          >
-            Get Started Now
-            <motion.div
-              animate={{ x: [0, 5, 0] }}
-              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-              className="ml-2"
-            >
-              <ArrowRight size={20} />
-            </motion.div>
-          </motion.span>
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-orange-100 to-red-100"
-            initial={{ x: "-100%" }}
-            whileHover={{ x: 0 }}
-            transition={{ duration: 0.5 }}
-          />
-        </Link>
-      </motion.div>
-
-      {/* Secondary CTA Button */}
-      <motion.div 
-        whileHover={{ scale: 1.05 }} 
-        whileTap={{ scale: 0.95 }} 
-        transition={{ duration: 0.8 }}
-        className="relative"
-      >
-        <Link 
-          to="about" 
-          className="px-12 py-5 border-2 border-white/40 text-white rounded-full font-bold text-lg hover:border-white/70 hover:bg-white/10 transition-all duration-500 flex items-center group"
-        >
-          Learn More
-          <motion.div
-            className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity"
-            animate={{ x: [0, 3, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          >
-            <ArrowRight size={18} />
-          </motion.div>
-        </Link>
-      </motion.div>
-    </motion.div>
-
-    {/* Trust Indicators */}
-    <motion.div 
-      variants={itemVariants}
-      className="grid grid-cols-3 gap-8 mt-20 max-w-2xl mx-auto"
-    >
-      {[
-        { icon: Globe, label: "Global Reach" },
-        { icon: TrendingUp, label: "Growth Focused" },
-        { icon: Shield, label: "Trusted Platform" },
-      ].map((item, i) => (
-        <motion.div
-          key={i}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 * i, duration: 1.2, ease: "easeOut" }}
-          className="text-center group"
-        >
-          <motion.div
-            whileHover={{ scale: 1.3, rotate: 360 }}
-            transition={{ duration: 1, ease: "easeInOut" }}
-            className="w-12 h-12 mx-auto mb-4 bg-white/15 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/25 transition-colors"
-          >
-            <item.icon className="w-6 h-6 text-white" />
-          </motion.div>
-          <p className="text-white/90 text-sm font-medium">{item.label}</p>
-        </motion.div>
-      ))}
-    </motion.div>
-
-    {/* Bottom Decorative Line */}
     <motion.div
-      initial={{ width: 0 }}
-      whileInView={{ width: "200px" }}
-      transition={{ duration: 1.5, delay: 1 }}
-      className="h-1 bg-gradient-to-r from-red-300 to-orange-300 mx-auto mt-16 rounded-full"
-    />
+      variants={itemVariants}
+      className="flex flex-wrap justify-center gap-6"
+    >
+      <Link
+        to="/services"
+        className="px-8 py-4 bg-white text-orange-600 font-semibold rounded-full hover:bg-orange-50 transition-all flex items-center gap-2"
+      >
+        Start Learning
+        <ArrowRight className="w-5 h-5" />
+      </Link>
+
+      <Link
+        to="/contact"
+        className="px-8 py-4 border border-white/40 text-white rounded-full hover:bg-white/10 transition-all"
+      >
+        Talk to Us
+      </Link>
+    </motion.div>
   </motion.div>
 </section>
-
-          
 </motion.div>
-        
-      
-    
   );
 };
 
 export default Home;
+          
+
+        
+      
+    
