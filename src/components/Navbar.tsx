@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
             <Checkbox 
               checked={isOpen}
               onChange={handleMenuToggle}
-              className="text-neutral-900 dark:text-white"
+              className="text-neutral-900 dark:text-white "
             />
           </div>
         </div>

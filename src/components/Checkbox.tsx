@@ -1,3 +1,5 @@
+// src/components/Checkbox.tsx
+
 import React from 'react';
 import styled from 'styled-components';
 
@@ -42,22 +44,26 @@ const StyledWrapper = styled.div`
   }
 
   .hamburger svg {
-    /* The size of the SVG defines the overall size */
     height: 3em;
     width: 3em;
-    /* Define the transition for transforming the SVG */
     transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .line {
     fill: none;
-    stroke: white;
+    /* Default color for light mode */
+    stroke: black; 
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-width: 3;
-    /* Define the transition for transforming the Stroke */
     transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
                 stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* --- THE FIX IS HERE --- */
+  /* When the <html> tag has the 'dark' class, set the stroke to white */
+  html.dark & .line {
+    stroke: white;
   }
 
   .line-top-bottom {
